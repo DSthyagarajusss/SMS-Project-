@@ -13,6 +13,30 @@
     <link rel="stylesheet" href="../css/styles.css">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
+<style>
+   .counter {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+    .icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .dashboard-card {
+      border-radius: 1rem;
+      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+      padding: 2rem;
+      transition: transform 0.2s ease;
+      text-align: center;
+    }
+    .dashboard-card:hover {
+      transform: translateY(-5px);
+    }
+    .BG{
+      background-color: rgb(97, 97, 88);
+      color: aliceblue;
+    }
+</style>
 <body>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
@@ -34,7 +58,7 @@
                     <li><a class="dropdown-item" href="#!">Settings</a></li>
                     <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                     <li><hr class="dropdown-divider" /></li>
-                    <li><a class="dropdown-item" href="./pages/login.html">Logout</a></li>
+                    <li><a class="dropdown-item" href="../pages/login.html">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -281,44 +305,38 @@
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item active">Admin</li>
                     </ol>
-                    <div class="row">
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card bg-primary text-white mb-4">
-                                <div class="card-body">Primary Card</div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="#">View Details</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
+                     <div class="container py-3  ">
+                            <div class="row g-4 text-center">
+                                <div class="col-md-3">
+                                    <div class="dashboard-card BG">
+                                        <div class="icon"><i class="fas fa-user-graduate"></i></div>
+                                        <div id="students" class="counter">0</div>
+                                        <div>Students</div></div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="dashboard-card BG">
+                                            <div class="icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                                            <div id="teachers" class="counter">0</div>
+                                            <div>Teachers</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="dashboard-card BG">
+                                            <div class="icon"><i class="fas fa-users"></i></div>
+                                            <div id="parents" class="counter">0</div>
+                                            <div>Parents</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="dashboard-card BG">
+                                            <div class="icon"><i class="fas fa-dollar-sign"></i></div>
+                                            <div id="earnings" class="counter">0</div>
+                                            <div>Earnings</div>
+                                        </div>
+                                    </div>
+                                </div>  
                             </div>
-                        </div>
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card bg-warning text-white mb-4">
-                                <div class="card-body">Warning Card</div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="#">View Details</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card bg-success text-white mb-4">
-                                <div class="card-body">Success Card</div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="#">View Details</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card bg-danger text-white mb-4">
-                                <div class="card-body">Danger Card</div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="#">View Details</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div class="row" id="Chart">
                         <div class="col-xl-6">
                             <div class="card mb-4">
@@ -423,6 +441,32 @@
             location.reload();
         }
     }
+    
+</script>
+ <script>
+  function animateCounter(id, target, duration) {
+    const element = document.getElementById(id);
+    let start = 0;
+    const stepTime = Math.abs(Math.floor(duration / target));
+
+    function step() {
+      start += 22;
+      element.textContent = start.toLocaleString();
+      if (start < target) {
+        setTimeout(step, stepTime);
+      }
+    }
+
+    step();
+  }
+
+  // Wait for the page to fully load before starting the counter animation
+  window.addEventListener('load', () => {
+    animateCounter('students', 11000, 20000);  // Target for students
+    animateCounter('teachers', 1300, 2000);   // Target for teachers
+    animateCounter('parents', 3000, 6000);   // Target for parents
+    animateCounter('earnings', 18000, 17500); // Target for earnings
+  });
 </script>
 </body>
 </html>
