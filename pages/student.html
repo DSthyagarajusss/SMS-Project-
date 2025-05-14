@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard - SB Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <link href="../css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+<style>
+   .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    .label {
+            font-weight: 500;
+            color: gray;
+        }
+    .table thead th {
+      vertical-align: middle;
+    }
+    .search-bar input {
+      border-radius: 6px;
+    }
+    .search-bar .btn {
+      border-radius: 6px;
+      background-color: #ffb400;
+      color: white;
+    }
+    .action-dots::after {
+      content: "⋮";
+      font-size: 20px;
+      color: rgb(216, 125, 125);
+      cursor: pointer;
+    }
+    .card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+    .legend-box {
+      width: 25px;
+      height: 4px;
+      margin-bottom: 4px;
+      border-radius: 2px;
+    }
+    .calendar-view .btn {
+      border-radius: 20px;
+      padding: 6px 16px;
+    }
+    .calendar-view .btn-active {
+      background-color: #f50057;
+      color: white;
+      box-shadow: 0 4px 12px rgba(245, 0, 87, 0.3);
+    }
+    .calendar td {
+      text-align: center;
+      padding: 6px;
+    }
+    .calendar .today {
+      background-color: #fff8e1;
+      border-radius: 8px;
+    }
+</style>
+<body>
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" href="../index.html">SMS Project</a>
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0 btn btn-link" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            <div class="input-group">
+                <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+            </div>
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#!">Settings</a></li>
+                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" href="./pages/login.html">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="layoutSidenav" >
+        <div id="layoutSidenav_nav" class="">
+            <nav class="sb-sidenav accordion sb-sidenav-dark " id="sidenavAccordion">
+                <div class="sb-sidenav-menu offcanvas-body p-0 offcanvas-start sidebar-nav bg-dark">
+                    <ul class="navbar-nav" id="sidebarAccordion">
+                        <!-- Dashboard -->
+                        <li>
+                            <a class="nav-link px-3 sidebar-link d-flex align-items-center" data-bs-toggle="collapse" href="#Dashboard">
+                                <span class="me-2 d-flex align-items-center"><i class="bi bi-speedometer text-warning"></i></span>
+                                <span class="flex-grow-1">Dashboard</span>
+                                <span class="ms-2 d-flex align-items-center"><i class="bi bi-chevron-right"></i></span>
+                              </a>
+                              
+                          <div class="collapse" id="Dashboard" data-bs-parent="#sidebarAccordion">
+                            <ul class="navbar-nav ps-3">
+                              <li><a href="./admin.html" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Admin</a></li>
+                              <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Students</a></li>
+                              <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Parents</a></li>
+                              <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Teachers</a></li>
+                            </ul>
+                          </div>
+                        </li>
+              
+                        <!-- Students -->
+                        <li>
+                            <a class="nav-link px-3 sidebar-link d-flex align-items-center" data-bs-toggle="collapse" href="#Students">
+                                <span class="me-2 d-flex align-items-center"><i class="bi bi-speedometer text-warning"></i></span>
+                                <span class="flex-grow-1">Students</span>
+                                <span class="ms-2 d-flex align-items-center"><i class="bi bi-chevron-right"></i></span>
+                              </a>
+                              
+                          <div class="collapse" id="Students" data-bs-parent="#sidebarAccordion">
+                            <ul class="navbar-nav ps-3">
+                              <li><a href="./allstudets.html" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>All Students</a></li>
+                              <li><a href="./details.html" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Students Details</a></li>
+                              <li><a href="./studentadd.html" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Admission Form</a></li>
+                              <li><a href="./Promotion.html" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Student Promotion</a></li>
+                            </ul>
+                          </div>
+                        </li>
+              
+                        <!-- Teachers -->
+                        <li>
+                            <a class="nav-link px-3 sidebar-link d-flex align-items-center" data-bs-toggle="collapse" href="#Teachers">
+                                <span class="me-2 d-flex align-items-center"><i class="bi bi-speedometer text-warning"></i></span>
+                                <span class="flex-grow-1">Teachers</span>
+                                <span class="ms-2 d-flex align-items-center"><i class="bi bi-chevron-right"></i></span>
+                              </a>
+                              
+                          <div class="collapse" id="Teachers" data-bs-parent="#sidebarAccordion">
+                            <ul class="navbar-nav ps-3">
+                              <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>All Teachers</a></li>
+                              <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Teachers Details</a></li>
+                              <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Add Teachers</a></li>
+                            </ul>
+                          </div>
+                        </li>
+                        
+                      <!-- Parents -->
+                      <li>
+                        <a class="nav-link px-3 sidebar-link d-flex align-items-center" data-bs-toggle="collapse" href="#Parents">
+                            <span class="me-2 d-flex align-items-center"><i class="bi bi-speedometer text-warning"></i></span>
+                            <span class="flex-grow-1">Parents</span>
+                            <span class="ms-2 d-flex align-items-center"><i class="bi bi-chevron-right"></i></span>
+                          </a>
+                          
+                        <div class="collapse" id="Parents" data-bs-parent="#sidebarAccordion">
+                          <ul class="navbar-nav ps-3">
+                            <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>All Parents</a></li>
+                            <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Parents Details</a></li>
+                            <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Add Parent</a></li>
+                          </ul>
+                        </div>
+                      </li>
+                
+                      <!-- Library -->
+                      <li>
+                        <a class="nav-link px-3 sidebar-link d-flex align-items-center" data-bs-toggle="collapse" href="#Library">
+                            <span class="me-2 d-flex align-items-center"><i class="bi bi-speedometer text-warning"></i></span>
+                            <span class="flex-grow-1">Library</span>
+                            <span class="ms-2 d-flex align-items-center"><i class="bi bi-chevron-right"></i></span>
+                          </a>
+                          
+                        <div class="collapse" id="Library" data-bs-parent="#sidebarAccordion">
+                          <ul class="navbar-nav ps-3">
+                            <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>All Books</a></li>
+                            <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Add New Book</a></li>
+                          </ul>
+                        </div>
+                      </li>
+            
+                  <!-- account -->
+                  <li>
+                    <a class="nav-link px-3 sidebar-link d-flex align-items-center" data-bs-toggle="collapse" href="#Account">
+                        <span class="me-2 d-flex align-items-center"><i class="bi bi-speedometer text-warning"></i></span>
+                        <span class="flex-grow-1">Account</span>
+                        <span class="ms-2 d-flex align-items-center"><i class="bi bi-chevron-right"></i></span>
+                      </a>
+                      
+                    <div class="collapse" id="Account" data-bs-parent="#sidebarAccordion">
+                      <ul class="navbar-nav ps-3">
+                        <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>All Fee Collections</a></li>
+                        <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Expenses</a></li>
+                        <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Add Expenses</a></li>
+                      </ul>
+                    </div>
+                  </li>
+                  <!-- Classes -->
+                  <li>
+                    <a class="nav-link px-3 sidebar-link d-flex align-items-center" data-bs-toggle="collapse" href="#Class">
+                        <span class="me-2 d-flex align-items-center"><i class="bi bi-speedometer text-warning"></i></span>
+                        <span class="flex-grow-1">Classes</span>
+                        <span class="ms-2 d-flex align-items-center"><i class="bi bi-chevron-right"></i></span>
+                      </a>
+                      
+                    <div class="collapse" id="Class" data-bs-parent="#sidebarAccordion">
+                      <ul class="navbar-nav ps-3">
+                        <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>All Classes</a></li>
+                        <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Add New Class</a></li>
+                      </ul>
+                    </div>
+                  </li>
+                      <!-- Subjects -->
+                      <li>
+                        <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#">
+                          <span class="me-2"><i class="bi bi-book text-warning"></i></span>
+                          <span>Subjects</span>
+                        </a>
+                      </li>
+                    <!-- class Routine -->
+                    <li>
+                      <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#">
+                        <span class="me-2"><i class="bi bi-calendar2-minus text-warning"></i></span>
+                        <span>Class Routine</span>
+                      </a>
+                    </li>
+                   <!-- Attendence -->
+                   <li>
+                    <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#">
+                      <span class="me-2"><i class="bi bi-card-checklist text-warning"></i></span>
+                      <span>Attendence</span>
+                    </a>
+                  </li>
+                <!-- Exams -->
+                <li>
+                  <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#Exam">
+                    <a class="nav-link px-3 sidebar-link d-flex align-items-center" data-bs-toggle="collapse" href="#Exam">
+                        <span class="me-2 d-flex align-items-center"><i class="bi bi-speedometer text-warning"></i></span>
+                        <span class="flex-grow-1">Exam</span>
+                        <span class="ms-2 d-flex align-items-center"><i class="bi bi-chevron-right"></i></span>
+                      </a>
+                      
+                  <div class="collapse" id="Exam" data-bs-parent="#sidebarAccordion">
+                    <ul class="navbar-nav ps-3">
+                      <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Exam Schedule</a></li>
+                      <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Exam Grades</a></li>
+                    </ul>
+                  </div>
+                </li>
+                <!-- Transport -->
+                <li>
+                  <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#">
+                    <span class="me-2"><i class="bi bi-truck text-warning"></i></span>
+                    <span>Transport</span>
+                  </a>
+                </li>
+            
+                <!-- Hostel -->
+                <li>
+                  <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#">
+                    <span class="me-2"><i class="bi bi-house-door text-warning"></i></span>
+                    <span>Hostel</span>
+                  </a>
+                </li>
+                <!-- Notice -->
+                <li>
+                  <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#">
+                    <span class="me-2"><i class="bi bi-menu-down text-warning"></i></span>
+                    <span>Notice</span>
+                  </a>
+                </li>
+                <!-- Massege -->
+                <li>
+                  <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#">
+                    <span class="me-2"><i class="bi bi-chat-left-dots text-warning"></i></span>
+                    <span>Massege</span>
+                  </a>
+                </li>
+                
+                <!-- map -->
+                <li>
+                  <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#">
+                    <span class="me-2"><i class="bi bi-map text-warning"></i></span>
+                    <span>Map</span>
+                  </a>
+                </li>
+            
+                <!-- Account -->
+                <li>
+                  <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#">
+                    <span class="me-2"><i class="bi bi-gear  text-warning"></i></span>
+                    <span>Account</span>
+                  </a>
+                </li>
+            
+                  
+                    <!-- Divider -->
+                    <li class="my-4"><hr class="dropdown-divider bg-light" /></li>
+                
+                    <li>
+                      <div class="text-muted small fw-bold text-uppercase px-3 mb-3">Addons</div>
+                    </li>
+              
+                    <!-- Charts -->
+                    <li>
+                      <a href="#Chart" class="nav-link px-3">
+                        <span class="me-2"><i class="bi bi-graph-up text-warning"></i></span>
+                        <span>Charts</span>
+                      </a>
+                    </li>
+              
+                    <!-- Tables -->
+                    <li>
+                      <a href="#table" class="nav-link px-3">
+                        <span class="me-2"><i class="bi bi-table text-warning"></i></span>
+                        <span>Tables</span>
+                      </a>
+                    </li>
+                        
+                      </ul>
+                </div>
+                
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <h1 class="mt-2 mb-0">Dashboard</h1>
+                    <div class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Actions
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-pencil-square me-2"></i>Edit</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-x-circle me-2"></i>Close</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-arrow-clockwise me-2"></i>Refresh</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item active">Students</li>
+                    </ol>
+                    <div class="container mt-5">
+                      <div class="card shadow-sm">
+                          <div class="card-body">
+                              <h4 class="mb-4">About Me</h4>
+                              <div class="d-flex flex-column flex-md-row align-items-center mb-4">
+                                  <img src="https://cdn-icons-png.flaticon.com/512/219/219983.png" alt="Profile" class="profile-img me-md-4 mb-3 mb-md-0">
+                                  <div>
+                                      <h5 class="mb-1">Jessia Rose</h5>
+                                      <p class="mb-0 text-muted">Aliquam erat volutpat. Curabiene natis massa sedde lacustiquen sodale word moun taie ry.</p>
+                                  </div>
+                              </div>
+                              <div class="row mb-2">
+                                  <div class="col-md-3 label">Name:</div>
+                                  <div class="col-md-9"><strong>Jessia Rose</strong></div>
+                              </div>
+                              <div class="row mb-2">
+                                  <div class="col-md-3 label">Gender:</div>
+                                  <div class="col-md-9"><strong>Female</strong></div>
+                              </div>
+                              <div class="row mb-2">
+                                  <div class="col-md-3 label">Father Name:</div>
+                                  <div class="col-md-9"><strong>Fahim Rahman</strong></div>
+                              </div>
+                              <div class="row mb-2">
+                                  <div class="col-md-3 label">Mother Name:</div>
+                                  <div class="col-md-9"><strong>Jannatul Kazi</strong></div>
+                              </div>
+                              <div class="row mb-2">
+                                  <div class="col-md-3 label">Date Of Birth:</div>
+                                  <div class="col-md-9"><strong>07.08.2006</strong></div>
+                              </div>
+                              <div class="row mb-2">
+                                  <div class="col-md-3 label">Religion:</div>
+                                  <div class="col-md-9"><strong>Islam</strong></div>
+                              </div>
+                              <div class="row mb-2">
+                                <div class="col-md-3 label">Father Occupation:</div>
+                                <div class="col-md-9"><strong>Graphic Designer</strong></div>
+                            </div>
+                            <div class="row mb-2">
+                              <div class="col-md-3 label">E-Mail:</div>
+                              <div class="col-md-9"><strong>jessiarose@gmail.com</strong></div>
+                            </div>
+                            <div class="row mb-2">
+                              <div class="col-md-3 label">Admission Date:</div>
+                              <div class="col-md-9"><strong>05.9.2022</strong></div>
+                          </div>
+                          <div class="row mb-2">
+                            <div class="col-md-3 label">Class:</div>
+                            <div class="col-md-9"><strong>9th</strong></div>
+                        </div>
+                        <div class="row mb-2">
+                          <div class="col-md-3 label">Section:</div>
+                          <div class="col-md-9"><strong>B1</strong></div>
+                      </div>
+                      <div class="row mb-2">
+                        <div class="col-md-3 label">Roll</div>
+                        <div class="col-md-9"><strong>23R3303</strong></div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-md-3 label">Address</div>
+                      <div class="col-md-9"><strong>House #10, Road #6,india</strong></div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col-md-3 label">Phone</div>
+                    <div class="col-md-9"><strong>87399830091</strong></div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="container my-5">
+          <h4 class="mb-4">All Exam Results</h4>
+        
+          <!-- Search Fields -->
+          <form class="row g-2 align-items-center mb-4 search-bar">
+            <div class="col-md-3">
+              <input type="text" class="form-control" placeholder="Search by Exam ..." />
+            </div>
+            <div class="col-md-3">
+              <input type="text" class="form-control" placeholder="Search by Subject ..." />
+            </div>
+            <div class="col-md-3">
+              <input type="text" class="form-control" placeholder="dd/mm/yyyy" />
+            </div>
+            <div class="col-md-3">
+              <button type="submit" class="btn w-100">SEARCH</button>
+            </div>
+          </form>
+        
+          <!-- Table -->
+          <div class="table-responsive">
+            <table class="table table-bordered align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th><input type="checkbox" /></th>
+                  <th>ID</th>
+                  <th>Exam Name</th>
+                  <th>Subject</th>
+                  <th>Grade</th>
+                  <th>Percent</th>
+                  <th>Date</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input type="checkbox" /></td>
+                  <td>#0021</td>
+                  <td>Class Test</td>
+                  <td>English</td>
+                  <td>A</td>
+                  <td>99.00 &gt; 100</td>
+                  <td>22/02/2019</td>
+                  <td class="text-end"><span class="action-dots"></span></td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" /></td>
+                  <td>#0022</td>
+                  <td>Class Test</td>
+                  <td>English</td>
+                  <td>A</td>
+                  <td>99.00 &gt; 100</td>
+                  <td>22/02/2019</td>
+                  <td class="text-end"><span class="action-dots"></span></td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" /></td>
+                  <td>#0023</td>
+                  <td>Class Test</td>
+                  <td>Chemistry</td>
+                  <td>A</td>
+                  <td>99.00 &gt; 100</td>
+                  <td>22/02/2019</td>
+                  <td class="text-end"><span class="action-dots"></span></td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" /></td>
+                  <td>#0024</td>
+                  <td>Class Test</td>
+                  <td>English</td>
+                  <td>A</td>
+                  <td>99.00 &gt; 100</td>
+                  <td>22/02/2019</td>
+                  <td class="text-end"><span class="action-dots"></span></td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" /></td>
+                  <td>#0025</td>
+                  <td>Class Test</td>
+                  <td>Chemistry</td>
+                  <td>A</td>
+                  <td>99.00 &gt; 100</td>
+                  <td>22/02/2019</td>
+                  <td class="text-end"><span class="action-dots"></span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="container-fluid">
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="card p-4">
+                <div class="d-flex justify-content-between">
+                  <h5 class="fw-bold">Attendence</h5>
+                  <div>⋯</div>
+                </div>
+                <canvas id="attendanceChart" height="180"></canvas>
+                <div class="d-flex justify-content-between mt-4">
+                  <div class="text-start">
+                    <div class="legend-box" style="background: #3f51b5;"></div>
+                    <div class="text-muted small">Absent</div>
+                    <div class="fw-bold">28.2%</div>
+                  </div>
+                  <div class="text-end">
+                    <div class="legend-box" style="background: #ffa000;"></div>
+                    <div class="text-muted small">Present</div>
+                    <div class="fw-bold">65.8%</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="card p-4">
+                <div class="d-flex justify-content-between">
+                  <h5 class="fw-bold">Event Calender</h5>
+                  <div>⋯</div>
+                </div>
+                <div class="mt-2 mb-2">
+                  <strong>May 2025</strong>
+                </div>
+                <div class="d-flex gap-2 mb-3 calendar-view">
+                  <button class="btn btn-light">Day</button>
+                  <button class="btn btn-light">Week</button>
+                  <button class="btn btn-active">Month</button>
+                </div>
+                <table class="table calendar table-borderless mb-0">
+                  <thead>
+                    <tr class="text-muted">
+                      <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th>
+                      <th>Thu</th><th>Fri</th><th>Sat</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-muted">27</td><td class="text-muted">28</td><td class="text-muted">29</td><td class="text-muted">30</td>
+                      <td>1</td><td>2</td><td>3</td>
+                    </tr>
+                    <tr>
+                      <td>4</td><td>5</td><td>6</td><td>7</td>
+                      <td>8</td><td>9</td><td>10</td>
+                    </tr>
+                    <tr>
+                      <td>11</td><td>12</td><td>13</td><td class="today">14</td>
+                      <td>15</td><td>16</td><td>17</td>
+                    </tr>
+                    <tr>
+                      <td>18</td><td>19</td><td>20</td><td>21</td>
+                      <td>22</td><td>23</td><td>24</td>
+                    </tr>
+                    <tr>
+                      <td>25</td><td>26</td><td>27</td><td>28</td>
+                      <td>29</td><td>30</td><td>31</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer class="py-4 bg-light mt-auto">
+          <div class="container-fluid px-4">
+              <div class="d-flex align-items-center justify-content-between small">
+                  <div class="text-muted">Copyright &copy; SMS Project 2025</div>
+                  <div>
+                      <a href="#">Privacy Policy</a>
+                      &middot;
+                      <a href="#">Terms &amp; Conditions</a>
+                  </div>
+              </div>
+          </div>
+      </footer>
+  </div>
+</div>   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="../js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="../assets/demo/chart-area-demo.js"></script>
+        <script src="../assets/demo/chart-bar-demo.js"></script>
+        <script src="../https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        <script src="../js/datatables-simple-demo.js"></script>
+        <script src="../assets/demo/attednce.js"></script>
+      
+</body>
+</html>

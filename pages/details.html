@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard - SB Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <link href="../css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+<style>
+   .profile-card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    .profile-img {
+      background-color: #00bcd4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 220px;
+      padding: 30px;
+      border-radius: 12px;
+    }
+    .profile-img img {
+      width: 100%;
+      max-width: 150px;
+    }
+    .info-label {
+      min-width: 140px;
+      font-weight: 500;
+      color: #6c757d;
+    }
+    .info-value {
+      font-weight: 600;
+      color: #000;
+    }
+    .action-btn {
+      border: none;
+      background: #f1f1f1;
+      border-radius: 8px;
+      padding: 6px 10px;
+      margin-left: 5px;
+    }
+  </style>
+</style>
+<body>
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" href="../index.html">SMS Project</a>
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0 btn btn-link" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            <div class="input-group">
+                <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+            </div>
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#!">Settings</a></li>
+                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" href="./pages/login.html">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="layoutSidenav" >
+        <div id="layoutSidenav_nav" class="">
+            <nav class="sb-sidenav accordion sb-sidenav-dark " id="sidenavAccordion">
+                <div class="sb-sidenav-menu offcanvas-body p-0 offcanvas-start sidebar-nav bg-dark">
+                    <ul class="navbar-nav" id="sidebarAccordion">
+                        <!-- Dashboard -->
+                        <li>
+                            <a class="nav-link px-3 sidebar-link d-flex align-items-center" data-bs-toggle="collapse" href="#Dashboard">
+                                <span class="me-2 d-flex align-items-center"><i class="bi bi-speedometer text-warning"></i></span>
+                                <span class="flex-grow-1">Dashboard</span>
+                                <span class="ms-2 d-flex align-items-center"><i class="bi bi-chevron-right"></i></span>
+                              </a>
+                              
+                          <div class="collapse" id="Dashboard" data-bs-parent="#sidebarAccordion">
+                            <ul class="navbar-nav ps-3">
+                              <li><a href="./admin.html" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Admin</a></li>
+                              <li><a href="./student.html" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Students</a></li>
+                              <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Parents</a></li>
+                              <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Teachers</a></li>
+                            </ul>
+                          </div>
+                        </li>
+              
+                        <!-- Students -->
+                        <li>
+                            <a class="nav-link px-3 sidebar-link d-flex align-items-center" data-bs-toggle="collapse" href="#Students">
+                                <span class="me-2 d-flex align-items-center"><i class="bi bi-speedometer text-warning"></i></span>
+                                <span class="flex-grow-1">Students</span>
+                                <span class="ms-2 d-flex align-items-center"><i class="bi bi-chevron-right"></i></span>
+                              </a>
+                              
+                          <div class="collapse" id="Students" data-bs-parent="#sidebarAccordion">
+                            <ul class="navbar-nav ps-3">
+                              <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>All Students</a></li>
+                              <li><a href="./details.html " class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Students Details</a></li>
+                              <li><a href="./studentadd.html" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Admission Form</a></li>
+                              <li><a href="./Promotion.html" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Admission Form</a></li>
+                            </ul>
+                          </div>
+                        </li>
+              
+                        <!-- Teachers -->
+                        <li>
+                            <a class="nav-link px-3 sidebar-link d-flex align-items-center" data-bs-toggle="collapse" href="#Teachers">
+                                <span class="me-2 d-flex align-items-center"><i class="bi bi-speedometer text-warning"></i></span>
+                                <span class="flex-grow-1">Teachers</span>
+                                <span class="ms-2 d-flex align-items-center"><i class="bi bi-chevron-right"></i></span>
+                              </a>
+                              
+                          <div class="collapse" id="Teachers" data-bs-parent="#sidebarAccordion">
+                            <ul class="navbar-nav ps-3">
+                              <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>All Teachers</a></li>
+                              <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Teachers Details</a></li>
+                              <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Add Teachers</a></li>
+                            </ul>
+                          </div>
+                        </li>
+                        
+                      <!-- Parents -->
+                      <li>
+                        <a class="nav-link px-3 sidebar-link d-flex align-items-center" data-bs-toggle="collapse" href="#Parents">
+                            <span class="me-2 d-flex align-items-center"><i class="bi bi-speedometer text-warning"></i></span>
+                            <span class="flex-grow-1">Parents</span>
+                            <span class="ms-2 d-flex align-items-center"><i class="bi bi-chevron-right"></i></span>
+                          </a>
+                          
+                        <div class="collapse" id="Parents" data-bs-parent="#sidebarAccordion">
+                          <ul class="navbar-nav ps-3">
+                            <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>All Parents</a></li>
+                            <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Parents Details</a></li>
+                            <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Add Parent</a></li>
+                          </ul>
+                        </div>
+                      </li>
+                
+                      <!-- Library -->
+                      <li>
+                        <a class="nav-link px-3 sidebar-link d-flex align-items-center" data-bs-toggle="collapse" href="#Library">
+                            <span class="me-2 d-flex align-items-center"><i class="bi bi-speedometer text-warning"></i></span>
+                            <span class="flex-grow-1">Library</span>
+                            <span class="ms-2 d-flex align-items-center"><i class="bi bi-chevron-right"></i></span>
+                          </a>
+                          
+                        <div class="collapse" id="Library" data-bs-parent="#sidebarAccordion">
+                          <ul class="navbar-nav ps-3">
+                            <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>All Books</a></li>
+                            <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Add New Book</a></li>
+                          </ul>
+                        </div>
+                      </li>
+            
+                  <!-- account -->
+                  <li>
+                    <a class="nav-link px-3 sidebar-link d-flex align-items-center" data-bs-toggle="collapse" href="#Account">
+                        <span class="me-2 d-flex align-items-center"><i class="bi bi-speedometer text-warning"></i></span>
+                        <span class="flex-grow-1">Account</span>
+                        <span class="ms-2 d-flex align-items-center"><i class="bi bi-chevron-right"></i></span>
+                      </a>
+                      
+                    <div class="collapse" id="Account" data-bs-parent="#sidebarAccordion">
+                      <ul class="navbar-nav ps-3">
+                        <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>All Fee Collections</a></li>
+                        <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Expenses</a></li>
+                        <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Add Expenses</a></li>
+                      </ul>
+                    </div>
+                  </li>
+                  <!-- Classes -->
+                  <li>
+                    <a class="nav-link px-3 sidebar-link d-flex align-items-center" data-bs-toggle="collapse" href="#Class">
+                        <span class="me-2 d-flex align-items-center"><i class="bi bi-speedometer text-warning"></i></span>
+                        <span class="flex-grow-1">Classes</span>
+                        <span class="ms-2 d-flex align-items-center"><i class="bi bi-chevron-right"></i></span>
+                      </a>
+                      
+                    <div class="collapse" id="Class" data-bs-parent="#sidebarAccordion">
+                      <ul class="navbar-nav ps-3">
+                        <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>All Classes</a></li>
+                        <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Add New Class</a></li>
+                      </ul>
+                    </div>
+                  </li>
+                      <!-- Subjects -->
+                      <li>
+                        <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#">
+                          <span class="me-2"><i class="bi bi-book text-warning"></i></span>
+                          <span>Subjects</span>
+                        </a>
+                      </li>
+                    <!-- class Routine -->
+                    <li>
+                      <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#">
+                        <span class="me-2"><i class="bi bi-calendar2-minus text-warning"></i></span>
+                        <span>Class Routine</span>
+                      </a>
+                    </li>
+                   <!-- Attendence -->
+                   <li>
+                    <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#">
+                      <span class="me-2"><i class="bi bi-card-checklist text-warning"></i></span>
+                      <span>Attendence</span>
+                    </a>
+                  </li>
+                <!-- Exams -->
+                <li>
+                  <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#Exam">
+                    <a class="nav-link px-3 sidebar-link d-flex align-items-center" data-bs-toggle="collapse" href="#Exam">
+                        <span class="me-2 d-flex align-items-center"><i class="bi bi-speedometer text-warning"></i></span>
+                        <span class="flex-grow-1">Exam</span>
+                        <span class="ms-2 d-flex align-items-center"><i class="bi bi-chevron-right"></i></span>
+                      </a>
+                      
+                  <div class="collapse" id="Exam" data-bs-parent="#sidebarAccordion">
+                    <ul class="navbar-nav ps-3">
+                      <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Exam Schedule</a></li>
+                      <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Exam Grades</a></li>
+                    </ul>
+                  </div>
+                </li>
+                <!-- Transport -->
+                <li>
+                  <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#">
+                    <span class="me-2"><i class="bi bi-truck text-warning"></i></span>
+                    <span>Transport</span>
+                  </a>
+                </li>
+            
+                <!-- Hostel -->
+                <li>
+                  <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#">
+                    <span class="me-2"><i class="bi bi-house-door text-warning"></i></span>
+                    <span>Hostel</span>
+                  </a>
+                </li>
+                <!-- Notice -->
+                <li>
+                  <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#">
+                    <span class="me-2"><i class="bi bi-menu-down text-warning"></i></span>
+                    <span>Notice</span>
+                  </a>
+                </li>
+                <!-- Massege -->
+                <li>
+                  <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#">
+                    <span class="me-2"><i class="bi bi-chat-left-dots text-warning"></i></span>
+                    <span>Massege</span>
+                  </a>
+                </li>
+                
+                <!-- map -->
+                <li>
+                  <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#">
+                    <span class="me-2"><i class="bi bi-map text-warning"></i></span>
+                    <span>Map</span>
+                  </a>
+                </li>
+            
+                <!-- Account -->
+                <li>
+                  <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#">
+                    <span class="me-2"><i class="bi bi-gear  text-warning"></i></span>
+                    <span>Account</span>
+                  </a>
+                </li>
+            
+                  
+                    <!-- Divider -->
+                    <li class="my-4"><hr class="dropdown-divider bg-light" /></li>
+                
+                    <li>
+                      <div class="text-muted small fw-bold text-uppercase px-3 mb-3">Addons</div>
+                    </li>
+              
+                    <!-- Charts -->
+                    <li>
+                      <a href="#Chart" class="nav-link px-3">
+                        <span class="me-2"><i class="bi bi-graph-up text-warning"></i></span>
+                        <span>Charts</span>
+                      </a>
+                    </li>
+              
+                    <!-- Tables -->
+                    <li>
+                      <a href="#table" class="nav-link px-3">
+                        <span class="me-2"><i class="bi bi-table text-warning"></i></span>
+                        <span>Tables</span>
+                      </a>
+                    </li>
+                        
+                      </ul>
+                </div>
+                
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4">Dashboard</h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item active">Students Details</li>
+                    </ol>
+                    <div class="container">
+                        <div class="card profile-card p-4">
+                          <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="fw-bold mb-0">About Me</h4>
+                            <div>
+                              <button class="action-btn btn btn-warning hover-shadow " title="Edit"><i class="bi bi-pencil-square"></i></button>
+                              <button class="action-btn btn btn-warning hover-shadow" title="Print"><i class="bi bi-printer"></i></button>
+                              <button class="action-btn btn btn-warning hover-shadow" title="Download"><i class="bi bi-download"></i></button>
+                            </div>
+                          </div>
+                    
+                          <div class="row g-4">
+                            <!-- Profile Image -->
+                            <div class="col-md-4">
+                              <div class="profile-img">
+                                <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Profile Image" >
+                              </div>
+                            </div>
+                    
+                            <!-- Profile Details -->
+                            <div class="col-md-8">
+                              <h5 class="fw-bold">Jessia Rose</h5>
+                              <p class="text-muted">
+                                Aliquam erat volutpat. Curabiene natis massa sedde lacu stiquen sodale word moun taiery.
+                                Aliquam erat voluptaturabiene natis massa sedde sodale word moun taiery.
+                              </p>
+                    
+                              <div class="row mb-2">
+                                <div class="col-5 col-sm-4 info-label">Name:</div>
+                                <div class="col info-value">Jessia Rose</div>
+                              </div>
+                              <div class="row mb-2">
+                                <div class="col-5 col-sm-4 info-label">Gender:</div>
+                                <div class="col info-value">Female</div>
+                              </div>
+                              <div class="row mb-2">
+                                <div class="col-5 col-sm-4 info-label">Father Name:</div>
+                                <div class="col info-value">Steve Jones</div>
+                              </div>
+                              <div class="row mb-2">
+                                <div class="col-5 col-sm-4 info-label">Mother Name:</div>
+                                <div class="col info-value">Naomi Rose</div>
+                              </div>
+                              <div class="row mb-2">
+                                <div class="col-5 col-sm-4 info-label">Date of Birth:</div>
+                                <div class="col info-value">07.08.2016</div>
+                              </div>
+                              <div class="row mb-2">
+                                <div class="col-5 col-sm-4 info-label">Religion:</div>
+                                <div class="col info-value">Islam</div>
+                              </div>
+                              <div class="row mb-2">
+                                <div class="col-5 col-sm-4 info-label">Father Occupation:</div>
+                                <div class="col info-value">Graphic Designer</div>
+                              </div>
+                              <div class="row mb-2">
+                                <div class="col-5 col-sm-4 info-label">E-Mail:</div>
+                                <div class="col info-value">jessiarose@gmail.com</div>
+                              </div>
+                              <div class="row mb-2">
+                                <div class="col-5 col-sm-4 info-label">Admission Date:</div>
+                                <div class="col info-value">07.08.2019</div>
+                              </div>
+                              <div class="row mb-2">
+                                <div class="col-5 col-sm-4 info-label">Class:</div>
+                                <div class="col info-value">8</div>
+                              </div>
+                              <div class="row mb-2">
+                                <div class="col-5 col-sm-4 info-label">Section:</div>
+                                <div class="col info-value">B1</div>
+                              </div>
+                              <div class="row mb-2">
+                                <div class="col-5 col-sm-4 info-label">Roll:</div>
+                                <div class="col info-value">22</div>
+                              </div>
+                              <div class="row mb-2">
+                                <div class="col-5 col-sm-4 info-label">address:</div>
+                                <div class="col info-value">House #10, Road #6, india</div>
+                              </div>
+                              <div class="row mb-2">
+                                <div class="col-5 col-sm-4 info-label">Phone:</div>
+                                <div class="col info-value">8988383098</div>
+                              </div>    
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+                       
+                 
+                
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; SMS Project 2025</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="../js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="../assets/demo/chart-area-demo.js"></script>
+        <script src="../assets/demo/chart-bar-demo.js"></script>
+        <script src="../https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        <script src="../js/datatables-simple-demo.js"></script>
+</body>
+</html>
