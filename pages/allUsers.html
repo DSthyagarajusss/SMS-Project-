@@ -14,27 +14,16 @@
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <style>
-   .counter {
-      font-size: 2.5rem;
-      font-weight: bold;
+   .table thead th {
+      vertical-align: middle;
     }
-    .icon {
-      font-size: 2rem;
-      margin-bottom: 1rem;
+    .search-bar input {
+      border-radius: 6px;
     }
-    .dashboard-card {
-      border-radius: 1rem;
-      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
-      padding: 2rem;
-      transition: transform 0.2s ease;
-      text-align: center;
-    }
-    .dashboard-card:hover {
-      transform: translateY(-5px);
-    }
-    .BG{
-      background-color: rgb(97, 97, 88);
-      color: aliceblue;
+    .search-bar .btn {
+      border-radius: 6px;
+      background-color: #ffb400;
+      color: white;
     }
 </style>
 <body>
@@ -318,88 +307,60 @@
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Dashboard</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">Admin</li>
+                        <li class="breadcrumb-item active">All Users</li>
                     </ol>
-                     <div class="container py-3  ">
-                            <div class="row g-4 text-center">
-                                <div class="col-md-3">
-                                    <div class="dashboard-card BG">
-                                        <div class="icon"><i class="fas fa-user-graduate"></i></div>
-                                        <div id="students" class="counter">0</div>
-                                        <div>Students</div></div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="dashboard-card BG">
-                                            <div class="icon"><i class="fas fa-chalkboard-teacher"></i></div>
-                                            <div id="teachers" class="counter">0</div>
-                                            <div>Teachers</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="dashboard-card BG">
-                                            <div class="icon"><i class="fas fa-users"></i></div>
-                                            <div id="parents" class="counter">0</div>
-                                            <div>Parents</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="dashboard-card BG">
-                                            <div class="icon"><i class="fas fa-dollar-sign"></i></div>
-                                            <div id="earnings" class="counter">0</div>
-                                            <div>Earnings</div>
-                                        </div>
-                                    </div>
-                                </div>  
-                            </div>
                     
-                    <div class="row" id="Chart">
-                        <div class="col-xl-6">
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    <i class="fas fa-chart-area me-1"></i>
-                                    Area Chart Example
-                                </div>
-                                <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
-                            </div>
+                    <div class="container bg-white p-4 mt-5 rounded shadow-sm">
+                       <h3 class="mb-4">All Users</h3>
+                        <form class="row g-2 align-items-center mb-4 search-bar">
+                        <div class="col-md-3">
+                          <input type="text" class="form-control" placeholder="Search by Exam ..." />
                         </div>
-                        <div class="col-xl-6">
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    <i class="fas fa-chart-bar me-1"></i>
-                                    Bar Chart Example
-                                </div>
-                                <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-                            </div>
+                        <div class="col-md-3">
+                          <input type="text" class="form-control" placeholder="Search by Subject ..." />
                         </div>
-                    </div>
-                    <div class="card mb-4" id="table">
-                        <div class="card-header">
-                            <i class="fas fa-table me-1"></i>
-                            Student Table
+                        <div class="col-md-3">
+                          <input type="text" class="form-control" placeholder="dd/mm/yyyy" />
                         </div>
-                        <div class="card-body">
-                            <table class="table table-bordered table-striped">
-                                <thead class="table-dark">
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Age</th>
-                                        <th>Mobile</th>
-                                        <th>Class</th>
-                                        <th>Location</th>
-                                        <th>Joining Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="studentTableBody">
+                        <div class="col-md-3">
+                          <button type="submit" class="btn w-100">SEARCH</button>
+                        </div>
+                      </form>
 
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="text-center">
-                            <button onclick="clearStudents()" class="btn btn-danger mt-3">Clear All Students</button>
-                            <a href="./studentadd.html"> <button class="btn btn-outline-primary align-items-center mt-3">Add Student</button></a>
-                        </div>
-                    </div>
+                     <div class="table-responsive">
+                         <table class="table table-bordered table-striped">
+                              <thead class="table-dark">
+                                 <tr>
+                                    <th>Roll</th>
+                                    <th>Name</th>
+                                     <th>Gender</th>
+                                      <th>DOB</th>
+                                     <th>Blood</th>
+                                     <th>Religion</th>
+                                      <th>Email</th>
+                                      <th>Who</th>
+                                       <th>Class</th>
+                                       <th>Admission ID</th>
+                                      <th>Phone</th>
+                                    <th>Short BIO</th>
+                                </tr>
+                             </thead>
+                         <tbody id="usersTableBody"></tbody>
+      </table>
+</div>
+
+
+                <div class="d-flex justify-content-between">
+                  <a href="./addUser.html" class="btn btn-secondary">Add More Users</a>
+                  <button onclick="clearUsers()" class="btn btn-danger">Clear All Users</button>
+                 </div>
                 </div>
+
+                   
+                    
+                    
+                    
+              </div>
                        
                  
                 
@@ -417,7 +378,44 @@
                 </div>
             </footer>
         </div>
+    
     </div>
+
+    <script>
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const tableBody = document.getElementById("usersTableBody");
+
+    if (users.length === 0) {
+      tableBody.innerHTML = "<tr><td colspan='11' class='text-center'>No users found.</td></tr>";
+    } else {
+      users.forEach((user, index) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${user.roll || "-"}</td>
+          <td>${user.first_name} ${user.last_name}</td>
+          <td>${user.gender}</td>
+          <td>${user.dob}</td>
+          <td>${user.blood_group}</td>
+          <td>${user.religion}</td>
+          <td>${user.email || "-"}</td>
+          <td>${user.who}</td>
+          <td>${user.sec || "-"}</td>
+          <td>${user.admission_id}</td>
+          <td>${user.phone || "-"}</td>
+          <td>${user.bio || "-"}</td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    function clearUsers() {
+      if (confirm("Are you sure you want to delete all student records?")) {
+        localStorage.removeItem("users");
+        location.reload();
+      }
+    }
+  </script>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
@@ -427,61 +425,8 @@
         <script src="../assets/demo/chart-bar-demo.js"></script>
         <script src="../https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="../js/datatables-simple-demo.js"></script>
-    
-    
-<script>
-    const students = JSON.parse(localStorage.getItem("students") || "[]");
-    const tableBody = document.getElementById("studentTableBody");
+  
+ 
 
-    if (students.length === 0) {
-        tableBody.innerHTML = "<tr><td colspan='6' class='text-center'>No students found.</td></tr>";
-    } else {
-        students.forEach(student => {
-            const row = document.createElement("tr");
-            row.innerHTML = `
-                <td>${student.name}</td>
-                <td>${student.age}</td>
-                <td>${student.mobile}</td>
-                <td>${student.class}</td>
-                <td>${student.location}</td>
-                <td>${student.joiningDate}</td>
-            `;
-            tableBody.appendChild(row);
-        });
-    }
-
-    function clearStudents() {
-        if (confirm("Are you sure you want to delete all student records?")) {
-            localStorage.removeItem("students");
-            location.reload();
-        }
-    }
-    
-</script>
- <script>
-  function animateCounter(id, target, duration) {
-    const element = document.getElementById(id);
-    let start = 0;
-    const stepTime = Math.abs(Math.floor(duration / target));
-
-    function step() {
-      start += 22;
-      element.textContent = start.toLocaleString();
-      if (start < target) {
-        setTimeout(step, stepTime);
-      }
-    }
-
-    step();
-  }
-
-  // Wait for the page to fully load before starting the counter animation
-  window.addEventListener('load', () => {
-    animateCounter('students', 11000, 20000);  // Target for students
-    animateCounter('teachers', 1300, 2000);   // Target for teachers
-    animateCounter('parents', 3000, 6000);   // Target for parents
-    animateCounter('earnings', 18000, 17500); // Target for earnings
-  });
-</script>
 </body>
 </html>

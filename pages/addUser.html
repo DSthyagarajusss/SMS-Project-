@@ -10,35 +10,11 @@
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
-    <link rel="stylesheet" href="../css/styles.css">
+    <link href="../css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
-<style>
-   .counter {
-      font-size: 2.5rem;
-      font-weight: bold;
-    }
-    .icon {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    .dashboard-card {
-      border-radius: 1rem;
-      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
-      padding: 2rem;
-      transition: transform 0.2s ease;
-      text-align: center;
-    }
-    .dashboard-card:hover {
-      transform: translateY(-5px);
-    }
-    .BG{
-      background-color: rgb(97, 97, 88);
-      color: aliceblue;
-    }
-</style>
-<body>
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+<body class="bg">
+     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3" href="../index.html">SMS Project</a>
         <!-- Sidebar Toggle-->
@@ -63,9 +39,9 @@
             </li>
         </ul>
     </nav>
-
     <div id="layoutSidenav" >
         <div id="layoutSidenav_nav" class="">
+
               <nav class="sb-sidenav accordion sb-sidenav-dark " id="sidenavAccordion">
                     <div class="sb-sidenav-menu offcanvas-body p-0 offcanvas-start sidebar-nav bg-dark">
                         <ul class="navbar-nav" id="sidebarAccordion">
@@ -79,8 +55,8 @@
                                   
                               <div class="collapse" id="Dashboard" data-bs-parent="#sidebarAccordion">
                                 <ul class="navbar-nav ps-3">
-                                  <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Admin</a></li>
-                                  <li><a href="./student.html" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Students</a></li>
+                                  <li><a href="./admin.html" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Admin</a></li>
+                                  <li><a href=".student.html" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Students</a></li>
                                   <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Parents</a></li>
                                   <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Teachers</a></li>
                                 </ul>
@@ -96,7 +72,7 @@
                                   
                               <div class="collapse" id="Users" data-bs-parent="#sidebarAccordion">
                                 <ul class="navbar-nav ps-3">
-                                  <li><a href="./addUser.html" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Add Users</a></li>
+                                  <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Add Users</a></li>
                                   <li><a href="./allUsers.html" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>All Users</a></li>
                                  </ul>
                               </div>
@@ -112,7 +88,7 @@
                                   
                               <div class="collapse" id="Students" data-bs-parent="#sidebarAccordion">
                                 <ul class="navbar-nav ps-3">
-                                  <li><a href="./allstudets.html" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>All Students</a></li>
+                                  <li><a href="#" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>All Students</a></li>
                                   <li><a href="./details.html" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Students Details</a></li>
                                   <li><a href="./studentadd.html" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Admission Form</a></li>
                                   <li><a href="./Promotion.html" class="nav-link px-3"><span class="me-2"><i class="bi bi-chevron-right"></i></span>Student Promotion</a></li>
@@ -262,10 +238,6 @@
                     </li>
                     <!-- Massege -->
                     <li>
-                      <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#">
-                        <span class="me-2"><i class="bi bi-chat-left-dots text-warning"></i></span>
-                        <span>Massege</span>
-                      </a>
                     </li>
                     
                     <!-- map -->
@@ -312,176 +284,169 @@
                     </div>
                     
                 </nav>
-        </div>
+              
+
+        </div> 
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Dashboard</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">Admin</li>
+                        <li class="breadcrumb-item active">Add User</li>
                     </ol>
-                     <div class="container py-3  ">
-                            <div class="row g-4 text-center">
-                                <div class="col-md-3">
-                                    <div class="dashboard-card BG">
-                                        <div class="icon"><i class="fas fa-user-graduate"></i></div>
-                                        <div id="students" class="counter">0</div>
-                                        <div>Students</div></div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="dashboard-card BG">
-                                            <div class="icon"><i class="fas fa-chalkboard-teacher"></i></div>
-                                            <div id="teachers" class="counter">0</div>
-                                            <div>Teachers</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="dashboard-card BG">
-                                            <div class="icon"><i class="fas fa-users"></i></div>
-                                            <div id="parents" class="counter">0</div>
-                                            <div>Parents</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="dashboard-card BG">
-                                            <div class="icon"><i class="fas fa-dollar-sign"></i></div>
-                                            <div id="earnings" class="counter">0</div>
-                                            <div>Earnings</div>
-                                        </div>
-                                    </div>
-                                </div>  
-                            </div>
-                    
-                    <div class="row" id="Chart">
-                        <div class="col-xl-6">
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    <i class="fas fa-chart-area me-1"></i>
-                                    Area Chart Example
-                                </div>
-                                <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6">
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    <i class="fas fa-chart-bar me-1"></i>
-                                    Bar Chart Example
-                                </div>
-                                <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card mb-4" id="table">
-                        <div class="card-header">
-                            <i class="fas fa-table me-1"></i>
-                            Student Table
-                        </div>
-                        <div class="card-body">
-                            <table class="table table-bordered table-striped">
-                                <thead class="table-dark">
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Age</th>
-                                        <th>Mobile</th>
-                                        <th>Class</th>
-                                        <th>Location</th>
-                                        <th>Joining Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="studentTableBody">
+                    <div class="container bg-white p-4 rounded shadow-sm">
+                      <h3 class="mb-4">Add New User</h3>
+                       <form id="UserForm">
+      <div class="row g-3">
+        <div class="col-md-3">
+          <label>First Name *</label>
+          <input type="text" name="first_name" class="form-control" required />
+        </div>
+        <div class="col-md-3">
+          <label>Last Name *</label>
+          <input type="text" name="last_name" class="form-control" required />
+        </div>
+        <div class="col-md-3">
+          <label>Gender *</label>
+          <select name="gender" class="form-select" required>
+            <option value="">Please Select Gender...</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label>Date Of Birth *</label>
+          <input type="date" name="dob" class="form-control" required />
+        </div>
 
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="text-center">
-                            <button onclick="clearStudents()" class="btn btn-danger mt-3">Clear All Students</button>
-                            <a href="./studentadd.html"> <button class="btn btn-outline-primary align-items-center mt-3">Add Student</button></a>
-                        </div>
-                    </div>
-                </div>
+        <div class="col-md-3">
+          <label>Roll Num</label>
+          <input type="text" name="roll" class="form-control" />
+        </div>
+        <div class="col-md-3">
+          <label>Blood Group *</label>
+          <select name="blood_group" class="form-select" required>
+            <option value="">Please Select Group *</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label>Religion *</label>
+          <select name="religion" class="form-select" required>
+            <option value="">Please Select Religion *</option>
+            <option value="Islam">Islam</option>
+            <option value="Hinduism">Hinduism</option>
+            <option value="Christianity">Christianity</option>
+            <option value="Buddhism">Buddhism</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label>E-Mail</label>
+          <input type="email" name="email" class="form-control" />
+        </div>
+
+        <div class="col-md-3">
+          <label>Who *</label>
+          <select name="who" class="form-select" required>
+            <option value="">Please Select Who *</option>
+            <option value="Student">Student</option>
+            <option value="Admin">admin</option>
+            <option value="Teacher">Teacher</option>
+            <option value="Parents">Parents</option>
+            
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label>Class*</label>
+           <input type="text" name="Class" name="sec" class="form-control" />
+         
+        </div>
+        <div class="col-md-3">
+          <label>Admission ID</label>
+          <input type="text" name="admission_id" class="form-control" />
+        </div>
+        <div class="col-md-3">
+          <label>Phone</label>
+          <input type="text" name="phone" class="form-control" />
+        </div>
+
+        <div class="col-md-6">
+          <label>Short BIO</label>
+          <textarea name="bio" class="form-control" rows="4"></textarea>
+        </div>
+        <div class="col-md-6">
+          <label>Upload Student Photo (150px X 150px)</label>
+          <input type="file" name="photo" class="form-control" />
+        </div>
+
+        <div class="col-12 text-end">
+          <button type="reset" class="btn btn-secondary me-2">Clear</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>    
+    
+    </div>
                        
                  
                 
-            </main>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                        <div>
-                            <a href="#">Privacy Policy</a>
-                            &middot;
-                            <a href="#">Terms &amp; Conditions</a>
-                        </div>
+</main>
+<footer class="py-4 bg-light mt-auto">
+    <div class="container-fluid px-4">
+         <div class="d-flex align-items-center justify-content-between small">
+              <div class="text-muted">Copyright &copy; SMS Project 2025</div>
+                  <div>
+                    <a href="#">Privacy Policy</a>
+                        &middot;
+                        <a href="#">Terms &amp; Conditions</a>
                     </div>
                 </div>
-            </footer>
-        </div>
+            </div>
+        </footer>
     </div>
+       
+  </div>
+       
+  </div>
+ <script>
+    const form = document.getElementById("UserForm");
 
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const newUser = {};
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+      formData.forEach((value, key) => {
+        if (key === "photo" && value instanceof File) {
+          newUser[key] = value.name || "No Photo";
+        } else {
+          newUser[key] = value;
+        }
+      });
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      users.push(newUser);
+      localStorage.setItem("users", JSON.stringify(users));
+      window.location.href = "./allUsers.html";
+    });
+  </script>
+
+    
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="../js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
         <script src="../assets/demo/chart-area-demo.js"></script>
         <script src="../assets/demo/chart-bar-demo.js"></script>
         <script src="../https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="../js/datatables-simple-demo.js"></script>
-    
-    
-<script>
-    const students = JSON.parse(localStorage.getItem("students") || "[]");
-    const tableBody = document.getElementById("studentTableBody");
-
-    if (students.length === 0) {
-        tableBody.innerHTML = "<tr><td colspan='6' class='text-center'>No students found.</td></tr>";
-    } else {
-        students.forEach(student => {
-            const row = document.createElement("tr");
-            row.innerHTML = `
-                <td>${student.name}</td>
-                <td>${student.age}</td>
-                <td>${student.mobile}</td>
-                <td>${student.class}</td>
-                <td>${student.location}</td>
-                <td>${student.joiningDate}</td>
-            `;
-            tableBody.appendChild(row);
-        });
-    }
-
-    function clearStudents() {
-        if (confirm("Are you sure you want to delete all student records?")) {
-            localStorage.removeItem("students");
-            location.reload();
-        }
-    }
-    
-</script>
- <script>
-  function animateCounter(id, target, duration) {
-    const element = document.getElementById(id);
-    let start = 0;
-    const stepTime = Math.abs(Math.floor(duration / target));
-
-    function step() {
-      start += 22;
-      element.textContent = start.toLocaleString();
-      if (start < target) {
-        setTimeout(step, stepTime);
-      }
-    }
-
-    step();
-  }
-
-  // Wait for the page to fully load before starting the counter animation
-  window.addEventListener('load', () => {
-    animateCounter('students', 11000, 20000);  // Target for students
-    animateCounter('teachers', 1300, 2000);   // Target for teachers
-    animateCounter('parents', 3000, 6000);   // Target for parents
-    animateCounter('earnings', 18000, 17500); // Target for earnings
-  });
-</script>
 </body>
 </html>
